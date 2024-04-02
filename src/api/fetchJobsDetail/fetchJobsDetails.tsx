@@ -8,33 +8,43 @@ export interface fetchJobsDetailProps {
 }
 
 const fetchJobsDetail = async ({ jobsId, setJobs }: fetchJobsDetailProps) => {
+  let jobsIdString
 
   if (!jobsId) {
     return;
   }
-  
-  const jobsIdString = Array.isArray(jobsId) ? jobsId.join(' , ') : jobsId
 
-const options = {
-  method: 'GET',
-  url: 'https://jsearch.p.rapidapi.com/job-details',
-  params: {
-    job_id: jobsIdString,
-    extended_publisher_details: 'true'
-  },
-  headers: {
-    'X-RapidAPI-Key': 'f63cf3ec6emsh3d725b5c79a169bp1dd2fcjsn36ea03d0676c',
-    'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+  if (Array.isArray(jobsId)) {
+    jobsIdString = await jobsId.join(',')
+  } else {
+    jobsIdString = await jobsId;
+  }
+
+  const options = {
+    method: 'GET',
+    url: 'https://jsearch.p.rapidapi.com/job-details',
+    params: {
+      job_id: jobsIdString,
+      extended_publisher_details: 'true'
+    },
+    headers: {
+      'X-RapidAPI-Key': 'f63cf3ec6emsh3d725b5c79a169bp1dd2fcjsn36ea03d0676c',
+      'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+    }
+  };
+
+  try {
+    if (!options.params.job_id || options.params.job_id === '' || options.params.job_id.length === 0) {
+      return []
+    }
+
+    const response = await axios.request(options);
+  
+  
+    setJobs(response.data.data)
+  } catch (error) {
+    console.error(error);
   }
 };
-
-try {
-  const response = await axios.request(options);
-  
-  setJobs(response.data.data)
-} catch (error) {
-	console.error(error);
-}
-}
 
 export default fetchJobsDetail;
