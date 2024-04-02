@@ -70,16 +70,13 @@ export interface IJob {
 
 const fetchJobsTitle = async ({ jobTitle, setJobs }: fetchJobsDetailProps) => {
 
-  console.log(jobTitle);
-
-
 const options = {
   method: 'GET',
   url: 'https://jsearch.p.rapidapi.com/search',
   params: {
+    query: jobTitle,
     page: '1',
     num_pages: '1',
-    job_titles: jobTitle
   },
   headers: {
     'X-RapidAPI-Key': `${process.env.apiKey}`,
