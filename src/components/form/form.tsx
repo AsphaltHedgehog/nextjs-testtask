@@ -4,7 +4,7 @@ import React from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 
 // schema
-import userValidationSchema from "@/schemas";
+import userValidationSchema from "@/schemas/userSchema";
 import { toast } from "react-toastify";
 
 export interface IUserFormValues {
