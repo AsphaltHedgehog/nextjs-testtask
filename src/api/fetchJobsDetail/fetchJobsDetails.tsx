@@ -1,6 +1,6 @@
 import React from "react";
 import axios from 'axios';
-import { IJob } from "@/components/fetchJobs";
+import { IJob } from "../fetchJobsTitle";
 
 export interface fetchJobsDetailProps {
   jobsId: string | string[];
@@ -28,7 +28,7 @@ const fetchJobsDetail = async ({ jobsId, setJobs }: fetchJobsDetailProps) => {
       extended_publisher_details: 'true'
     },
     headers: {
-      'X-RapidAPI-Key': 'f63cf3ec6emsh3d725b5c79a169bp1dd2fcjsn36ea03d0676c',
+      'X-RapidAPI-Key': `${process.env.apiKey}`,
       'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
     }
   };
