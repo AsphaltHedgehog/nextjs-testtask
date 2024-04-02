@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 // components
 import { IJob } from '@/api/fetchJobsTitle';
@@ -32,7 +32,10 @@ const JobDetailsPage = ({ params }: JobDetailsPageProps) => {
   return (
     <main>
       <div>
-        {employer_logo && <Image src={employer_logo} alt='logo' width={124} height={124} />}
+        {employer_logo &&
+          // <Image src={employer_logo} alt='logo' width={124} height={124} />
+          <img src={employer_logo} alt='logo' width={124} height={124} />
+        }
         <h3>{job_title}</h3>
         <div>
           <p>{job_city}</p>

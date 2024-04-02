@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 
 
@@ -18,7 +18,10 @@ const JobCard = ({ jobInfo, setFavoriteIds }: JobCardProps) => {
   
   return (
     <>
-      {employer_logo && <Image src={employer_logo} alt='logo' width={24} height={24}/>}
+      {employer_logo &&
+        // <Image src={employer_logo} alt='logo' width={24} height={24} />
+        <img src={employer_logo} alt='logo' width={24} height={24}/>
+      }
       <h3>{job_title}</h3>
       <div>
         <p>{job_city}</p>
