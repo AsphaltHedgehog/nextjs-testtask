@@ -14,7 +14,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   setFavoriteIds?: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-export default function Button({ jobId, setFavoriteIds, ...rest }: ButtonProps) {
+export default function FavButton({ jobId, setFavoriteIds, ...rest }: ButtonProps) {
   const [favArr, setFavArr] = useState<string[]>([]);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Button({ jobId, setFavoriteIds, ...rest }: ButtonProps) 
   return (
     <button {...rest}
       onClick={handleClick}
-      className={`py-2.5 px-5 bg-gray-900 text-zinc-50 text-base text-center font-medium rounded' ${favArr.includes(jobId) ? 'bg-pink-600' : ""} favButton`}>
+      className={`py-2.5 px-5 bg-gray-900 text-zinc-50 text-base text-center font-medium rounded' ${favArr.includes(jobId) ? 'bg-pink-600' : ""}`}>
       {favArr.includes(jobId) ? "Unlike" : "Like"}
     </button>
   );
