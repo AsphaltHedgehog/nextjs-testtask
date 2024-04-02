@@ -1,11 +1,13 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 // interface
 import { IJob } from '../fetchJobs'
 
 // components
-import Button from '../button'
+import FavButton from '../favButton'
+import { toast } from 'react-toastify'
 
 export interface JobCardProps {
   jobInfo: IJob
@@ -39,7 +41,8 @@ const JobCard = ({ jobInfo, setFavoriteIds }: JobCardProps) => {
       <p>Remote: { job_is_remote ? 'Yes' : 'No' }</p>
       <p>Employment type: {job_employment_type}</p>
       
-      <Button jobId={job_id} setFavoriteIds={setFavoriteIds}>Like</Button>
+      <FavButton jobId={job_id} setFavoriteIds={setFavoriteIds}>Like</FavButton>
+      <Link onClick={() => toast.info('Job details loading...')} href={`/job-details/${job_id}`}> Job Details </Link>
     </>
   )
 }
