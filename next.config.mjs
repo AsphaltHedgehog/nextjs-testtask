@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ['upload.wikimedia.org', "encrypted-tbn0.gstatic.com", "firstteeaustin.org"],
   },
   env: {
-    apiKey: 'f63cf3ec6emsh3d725b5c79a169bp1dd2fcjsn36ea03d0676c',
+    apiKey: 'a9681e5d77mshe54731460894278p138f6ajsn3e29791c6eab',
   },
 };
 
