@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import fetchJobs, { IJob } from "@/components/fetchJobs";
 import JobList from "@/components/jobList";
 
-export default function Home() {
+export default function JobsPage() {
   const [jobs, setJobs] = useState<IJob[]>([])
   
   useEffect(() => {
@@ -14,8 +14,6 @@ export default function Home() {
       fetchJobs({setJobs});
     }
   }, [jobs.length])
-  
-
 
   return (
     <main>
