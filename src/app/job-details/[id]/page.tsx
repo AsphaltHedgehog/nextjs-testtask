@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
 // components
-import { IJob } from '@/components/fetchJobs';
+import { IJob } from '@/api/fetchJobsTitle';
 import FavButton from '@/components/favButton';
 
 // api

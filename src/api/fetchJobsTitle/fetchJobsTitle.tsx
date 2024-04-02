@@ -1,16 +1,77 @@
 import React from "react";
 import axios from 'axios';
-import { IJob } from "@/components/fetchJobs";
+
 
 export interface fetchJobsDetailProps {
   jobTitle: string;
   setJobs: React.Dispatch<React.SetStateAction<IJob[]>>;
 }
 
+export interface IJob {
+  employer_name: string;
+  employer_logo: string | null;
+  employer_website: string | null;
+  employer_company_type: string | null;
+  job_publisher: string;
+  job_id: string;
+  job_employment_type: string;
+  job_title: string;
+  job_apply_link: string;
+  job_apply_is_direct: boolean;
+  job_apply_quality_score: number;
+  job_description: string;
+  job_is_remote: boolean;
+  job_posted_at_timestamp: number;
+  job_posted_at_datetime_utc: string;
+  job_city: string;
+  job_state: string;
+  job_country: string;
+  job_latitude: number;
+  job_longitude: number;
+  job_benefits?: string[] | null; 
+  job_google_link: string;
+  job_offer_expiration_datetime_utc: string | null;
+  job_offer_expiration_timestamp: number | null;
+  job_required_experience: {
+    no_experience_required: boolean;
+    required_experience_in_months: number | null;
+    experience_mentioned: boolean;
+    experience_preferred: boolean;
+  };
+  job_required_skills: string[] | null;
+  job_required_education: {
+    postgraduate_degree: boolean;
+    professional_certification: boolean;
+    high_school: boolean;
+    associates_degree: boolean;
+    bachelors_degree: boolean;
+    degree_mentioned: boolean;
+    degree_preferred: boolean;
+    professional_certification_mentioned: boolean;
+  };
+  job_experience_in_place_of_education: boolean;
+  job_min_salary: number | null;
+  job_max_salary: number | null;
+  job_salary_currency: string | null;
+  job_salary_period: string | null;
+  job_highlights?: {
+    Qualifications: string[];
+    Responsibilities: string[];
+    Benefits?: string[];
+  } | {};
+  job_job_title: string | null;
+  job_posting_language: string;
+  job_onet_soc: string;
+  job_onet_job_zone: string;
+  job_naics_code?: string;
+  job_naics_name?: string;
+  job_occupational_categories?: string[];
+}
+
 const fetchJobsTitle = async ({ jobTitle, setJobs }: fetchJobsDetailProps) => {
 
   console.log(jobTitle);
-  
+
 
 const options = {
   method: 'GET',
@@ -18,30 +79,19 @@ const options = {
   params: {
     page: '1',
     num_pages: '1',
-    // job_titles: TODO: 
+    job_titles: jobTitle
   },
   headers: {
-    'X-RapidAPI-Key': 'f63cf3ec6emsh3d725b5c79a169bp1dd2fcjsn36ea03d0676c',
+    'X-RapidAPI-Key': `${process.env.apiKey}`,
     'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
   }
   };
 
-// try {
-// 	const response = await axios.request(options);
-// 	console.log(response.data);
-// } catch (error) {
-// 	console.error(error);
-// }
-
   try {
-    // if (!options.params.job_id || options.params.job_id === '' || options.params.job_id.length === 0) {
-    //   return []
-    // }
-
-    // const response = await axios.request(options);
+    const response = await axios.request(options);
   
   
-    // setJobs(response.data.data)
+    setJobs(response.data.data)
   } catch (error) {
     console.error(error);
   }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 
 // components
-import fetchJobs, { IJob } from "@/components/fetchJobs";
+import { IJob } from "@/api/fetchJobsTitle";
 import JobList from "@/components/jobList";
 
 export default function JobsPage() {
@@ -11,7 +11,7 @@ export default function JobsPage() {
   
   useEffect(() => {
     if (jobs.length < 1) {
-      fetchJobs({setJobs});
+      // fetchJobs({setJobs});
     }
   }, [jobs.length])
 

@@ -2,9 +2,8 @@ import React from 'react'
 
 // components
 import JobCard from "@/components/jobCard";
+import { IJob } from '@/api/fetchJobsTitle';
 
-// interface
-import { IJob } from '../fetchJobs'
 
 export interface JobListProps {
   jobInfoArray: IJob[]
@@ -15,7 +14,7 @@ const JobList = ({ jobInfoArray, setFavoriteIds }: JobListProps) => {
   const listCreator = (jobInfoArray: IJob[]) => {
 
     const elements = jobInfoArray.map(jobInfo => (
-      <li key={jobInfo.job_id} onClick={() => console.log(1)}>
+      <li key={jobInfo.job_id}>
         <JobCard jobInfo={jobInfo} setFavoriteIds={ setFavoriteIds }/>
       </li>
     ))

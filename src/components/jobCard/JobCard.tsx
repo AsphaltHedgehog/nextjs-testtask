@@ -2,10 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// interface
-import { IJob } from '../fetchJobs'
 
 // components
+import { IJob } from '@/api/fetchJobsTitle'
 import FavButton from '../favButton'
 import { toast } from 'react-toastify'
 

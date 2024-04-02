@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import fetchJobsDetail from "@/api/fetchJobsDetail";
 
 // components
-import { IJob } from "@/components/fetchJobs";
+import { IJob } from "@/api/fetchJobsTitle";
 import JobList from "@/components/jobList";
 
 export default function LikedPage() {
