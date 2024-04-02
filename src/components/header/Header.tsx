@@ -20,7 +20,6 @@ const Header = ({}: HeaderProps) => {
           My Profile
         </Link>
 
-        {/* TODO: hide for non user */}
         <Link href="/liked">
           Liked Jobs
         </Link>
