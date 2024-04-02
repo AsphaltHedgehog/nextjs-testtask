@@ -9,9 +9,10 @@ import Button from '../button'
 
 export interface JobCardProps {
   jobInfo: IJob
+  setFavoriteIds?: React.Dispatch<React.SetStateAction<string[]>>
 }
 
-const JobCard = ({ jobInfo }: JobCardProps) => {
+const JobCard = ({ jobInfo, setFavoriteIds }: JobCardProps) => {
   const { job_title, job_city, job_state, job_description, job_max_salary, job_min_salary, job_is_remote, job_employment_type, employer_logo, job_id } = jobInfo
   
   return (
@@ -38,7 +39,7 @@ const JobCard = ({ jobInfo }: JobCardProps) => {
       <p>Remote: { job_is_remote ? 'Yes' : 'No' }</p>
       <p>Employment type: {job_employment_type}</p>
       
-      <Button favorite={true} jobId={job_id}>Like</Button>
+      <Button jobId={job_id} setFavoriteIds={setFavoriteIds}>Like</Button>
     </>
   )
 }
