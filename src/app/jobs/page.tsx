@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 // components
 import fetchJobs, { IJob } from "@/components/fetchJobs";
-import JobCard from "@/components/jobCard";
+import JobList from "@/components/jobList";
 
 export default function Home() {
   const [jobs, setJobs] = useState<IJob[]>([])
@@ -23,7 +23,7 @@ export default function Home() {
         <h1>Find your Dream Job</h1>
         <div>Filter</div>
         {jobs.length > 0 ?
-          <div>Jobs: <JobCard jobInfo={jobs[1]} /> </div> :
+          <div>Jobs: <JobList jobInfoArray={ jobs } /> </div> :
           <p>Loading...</p>
         }
       </section>
