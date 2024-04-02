@@ -30,7 +30,7 @@ export default function LikedPage() {
     <main>
       <h2>Liked Jobs</h2>
       <section>
-        <> <JobList jobInfoArray={jobs} setFavoriteIds={ setFavoriteIds  } /> </>
+        <JobList jobInfoArray={jobs} setFavoriteIds={ setFavoriteIds  } />
       </section>
     </main>
   )
