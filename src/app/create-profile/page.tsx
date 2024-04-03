@@ -1,5 +1,5 @@
 import React from "react";
-import UserForm from "@/components/form";
+import UserForm from "@/components/userForm";
 
 
 
