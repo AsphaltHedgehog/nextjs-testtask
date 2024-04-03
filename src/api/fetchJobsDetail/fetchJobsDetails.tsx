@@ -1,17 +1,15 @@
-import React from "react";
 import axios from 'axios';
-import { IJob } from "../fetchJobsTitle";
 
 export interface fetchJobsDetailProps {
   jobsId: string | string[];
-  setJobs: React.Dispatch<React.SetStateAction<IJob[]>>;
 }
 
-const fetchJobsDetail = async ({ jobsId, setJobs }: fetchJobsDetailProps) => {
+const fetchJobsDetail = async ({ jobsId }: fetchJobsDetailProps) => {
   let jobsIdString
 
+  try {
   if (!jobsId) {
-    return;
+    throw new Error;
   }
 
   if (Array.isArray(jobsId)) {
@@ -33,17 +31,16 @@ const fetchJobsDetail = async ({ jobsId, setJobs }: fetchJobsDetailProps) => {
     }
   };
 
-  try {
+
     if (!options.params.job_id || options.params.job_id === '' || options.params.job_id.length === 0) {
-      return []
+      throw new Error;
     }
 
     const response = await axios.request(options);
-  
-  
-    setJobs(response.data.data)
+    return response.data.data
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 

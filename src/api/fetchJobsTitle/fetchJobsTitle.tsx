@@ -1,11 +1,4 @@
-import React from "react";
 import axios from 'axios';
-
-
-export interface fetchJobsDetailProps {
-  jobTitle: string;
-  setJobs: React.Dispatch<React.SetStateAction<IJob[]>>;
-}
 
 export interface IJob {
   employer_name: string;
@@ -68,13 +61,12 @@ export interface IJob {
   job_occupational_categories?: string[];
 }
 
-const fetchJobsTitle = async ({ jobTitle, setJobs }: fetchJobsDetailProps) => {
-
+const fetchJobsTitle = async (titleString: string) => {
 const options = {
   method: 'GET',
   url: 'https://jsearch.p.rapidapi.com/search',
   params: {
-    query: jobTitle,
+    query: titleString,
     page: '1',
     num_pages: '1',
   },
@@ -86,9 +78,7 @@ const options = {
 
   try {
     const response = await axios.request(options);
-  
-  
-    setJobs(response.data.data)
+    return response.data.data
   } catch (error) {
     console.error(error);
   }
