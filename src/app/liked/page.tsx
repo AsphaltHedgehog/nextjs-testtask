@@ -2,35 +2,27 @@
 
 import React, { useEffect, useState } from "react";
 
-// api
-import fetchJobsDetail from "@/api/fetchJobsDetail";
+// swr
+import FavoritePageSWR from "@/hooks/swr/favoriteSwr";
 
-// components
-import { IJob } from "@/api/fetchJobsTitle";
-import JobList from "@/components/jobList";
 
 export default function LikedPage() {
-  const [jobs, setJobs] = useState<IJob[]>([]);
   const [favoriteIds, setFavoriteIds] = useState<string[]>([]);
   
   useEffect(() => {
     const storedJobs = localStorage.getItem("data");
     if (!storedJobs || storedJobs.length < 1) {
-      return
+      return;
     };
-      
     setFavoriteIds(JSON.parse(storedJobs));
   }, [])
 
-  useEffect(() => {
-    fetchJobsDetail({ jobsId: favoriteIds, setJobs })
-  }, [favoriteIds]);
 
   return (
-    <main>
-      <h2>Liked Jobs</h2>
-      <section>
-        <JobList jobInfoArray={jobs} setFavoriteIds={ setFavoriteIds  } />
+    <main className="min-h-screen bg-gray-100 flex flex-col items-center ">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-4">Liked Jobs</h2>
+      <section className="mx-auto max-w-4xl">
+        <FavoritePageSWR favoriteIds={favoriteIds} setFavoriteIds={setFavoriteIds} />
       </section>
     </main>
   )
