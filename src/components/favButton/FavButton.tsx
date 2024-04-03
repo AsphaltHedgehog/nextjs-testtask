@@ -35,7 +35,11 @@ export default function FavButton({ jobId, setFavoriteIds, ...rest }: ButtonProp
   return (
     <button {...rest}
       onClick={handleClick}
-      className={`py-2.5 px-5 bg-gray-900 text-zinc-50 text-base text-center font-medium rounded' ${favArr.includes(jobId) ? 'bg-pink-600' : ""}`}>
+      className={`py-2.5 px-5 bg-gray-900 text-zinc-50 text-base text-center font-medium rounded shadow-md transition-colors duration-300 hover:bg-gray-800 hover:shadow-lg
+      ${favArr.includes(jobId) ? 'bg-pink-600 hover:bg-pink-800' : ""}`
+      }
+      
+    >
       {favArr.includes(jobId) ? "Unlike" : "Like"}
     </button>
   );
